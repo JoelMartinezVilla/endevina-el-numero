@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:inputType="number"
+        android:text="Guess the Number"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumber"
+        tools:layout_editor_absoluteX="127dp"></EditText>
+
+    <TextView
+        android:id="@+id/textViewTries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Tries: "
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="186dp" />
+
+    <TextView
+        android:id="@+id/textViewNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="Number: "
+        app:layout_constraintTop_toBottomOf="@+id/textViewTries"
+        tools:layout_editor_absoluteX="177dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:text="Go!"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        tools:layout_editor_absoluteX="161dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
