@@ -14,23 +14,27 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
         Random randomNumbers = new Random();
+        int tries = 0;
         int number = randomNumbers.nextInt(100)+1;
         final Button button = findViewById(R.id.button);
         EditText editText = findViewById(R.id.editText);
         TextView textViewTries = findViewById(R.id.textViewTries);
         TextView textViewNumber = findViewById(R.id.textViewNumber);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 CharSequence numberText = String.valueOf(number);
                 textViewNumber.setText(numberText);
 
                 CharSequence textSuccess = "Lo has adivinado! :)";
-                CharSequence textFailure = "No lo has adivinado! :(";
+                CharSequence textFailureLower = "El número secreto es más pequeño! :(";
+                CharSequence textFailureBigger = "El número secreto es más grande! :(";
                 int duration = Toast.LENGTH_SHORT;
 
 
@@ -40,13 +44,17 @@ public class MainActivity extends AppCompatActivity {
                 if (guess == number){
                     Toast toast = Toast.makeText(MainActivity.this, textSuccess, duration);
                     toast.show();
+                }else if(guess<number){
+                    Toast toast = Toast.makeText(MainActivity.this, textFailureBigger, duration);
+                    toast.show();
                 }else{
-                    Toast toast = Toast.makeText(MainActivity.this, textFailure, duration);
+                    Toast toast = Toast.makeText(MainActivity.this, textFailureLower, duration);
                     toast.show();
                 };
 
 
             }
         });
+
     }
 }
