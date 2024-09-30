@@ -13,24 +13,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static int tries = 0;
+    static Random randomNumbers = new Random();
+    public static int number = randomNumbers.nextInt(100)+1;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
 
-        Random randomNumbers = new Random();
-        int tries = 0;
-        int number = randomNumbers.nextInt(100)+1;
         final Button button = findViewById(R.id.button);
         EditText editText = findViewById(R.id.editText);
         TextView textViewTries = findViewById(R.id.textViewTries);
-        TextView textViewNumber = findViewById(R.id.textViewNumber);
+        CharSequence numberText = String.valueOf(number);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CharSequence numberText = String.valueOf(number);
-                textViewNumber.setText(numberText);
+                tries++;
 
                 CharSequence textSuccess = "Lo has adivinado! :)";
                 CharSequence textFailureLower = "El número secreto es más pequeño! :(";
@@ -44,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 if (guess == number){
                     Toast toast = Toast.makeText(MainActivity.this, textSuccess, duration);
                     toast.show();
+                    number = randomNumbers.nextInt(100)+1;
+                    tries = 0;
+                    CharSequence numberText = String.valueOf(number);
+
                 }else if(guess<number){
                     Toast toast = Toast.makeText(MainActivity.this, textFailureBigger, duration);
                     toast.show();
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(MainActivity.this, textFailureLower, duration);
                     toast.show();
                 };
+                textViewTries.setText("Tries: "+tries);
 
 
             }
